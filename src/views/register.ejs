@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="container">
+        <div class="row mt-5">
+            <!--div class="col-7 login-left">
+            </div-->
+            <div class="col-6 mt-2">
+                <div>
+                    <% if(errors != "") { %>
+                        <% errors.forEach((item) => { %>
+                            <div class="alert alert-danger">
+                                <%- item %>
+                            </div>
+                        <% }); %>
+                    <% } %>
+
+                </div>
+                <form method="POST" action="/register">
+                    <h2 align=center>Créer un compte</h2>
+                    <div class="form-group">
+                        <label for="code">Code permanent</label>
+                        <input type="text" class="form-control" name="codePermanent" id="codePermanent" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordConfirmation">Re-écrire le mot de passe</label>
+                        <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">S'enregistrer</button>
+                </form>
+<!--btn btn-info mt-4 mb-4 pt-2 pb-2 btn-block-->
+                <hr>
+                <div>
+                   <h5 align=center >Si t'as déja un compte alors... <a href="/login">Connectez-vous</a>.</h5>
+                </div>
+                <!--div>
+                    Return to <a href="/">Home Page</a>
+                </div-->
+                          
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

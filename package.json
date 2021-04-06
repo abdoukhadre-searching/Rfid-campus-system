@@ -1,0 +1,36 @@
+{
+  "name": "E-Payment Appli RFID",
+  "version": "1.0.0",
+  "description": "Building a login system with NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src/server.js"
+  },
+  "author": "Dream Team SRT",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.5.0",
+    "long": "^4.0.0",
+    "mysql2": "^2.1.0",
+    "node-datetime": "^2.1.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "twilio": "^3.59.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.7"
+  }
+}
