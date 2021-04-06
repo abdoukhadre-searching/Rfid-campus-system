@@ -1,17 +1,14 @@
-# tutorial-youtube (Login, register with Passport middleware)
+# Projet E-payment RFID Campus University
 
-**Project : A login/register sytem using NodeJS platform (NodeJS + MySQL + Bootstrap 4).**
+** NodeJs + MySQL + Express + Visual Basic 2015 pour l'interface administrateur **
 
-View full tutorial on youtube: https://www.youtube.com/watch?v=DcB1Ge0HQ4I&list=PLNOjHC_BXrfCNWe0ghCxEmNVeHN_J5K3k
+Comment lancer le projet ?
+1. Cloner le projet
 
-How to run this project: 
+2. Avec votre base de données pour l'instant avec 3 tables .
 
-1. Clone this project
+3. Créer un fichier '.env' dans le dossier racine: copier le fichier depuis le depot cloné et adapté le avec vos propre informations, variable d'environnement pour la base de données,  etc..
 
-2. With MySQL database, create a "users" table with 4 fields: id, fullname, email, password.
+4. Lancer "npm install" pour installer tous les packets et dépendances du fichier package.json .
 
-3. Create a .env file in the root folder: copy the .env.example file, rename to .env file -> change parameters like database name, port, username, password etc.
-
-4. Run "npm install" to install all packages in package.json file.
-
-5. Run "npm start " to start the project
+5. Esnuite tapez "npm start " pour visualiser le project
