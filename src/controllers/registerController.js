@@ -5,7 +5,7 @@ const getPageRegister = (req, res) => {
     return res.render("register.ejs", {
         errors: req.flash("errors")
     });
-};
+}; 
 
 const createNewUser = async (req, res) => {
     //valider les champs requises
