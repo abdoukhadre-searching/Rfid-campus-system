@@ -10,7 +10,7 @@ const transfert = async (req , res) => {
         month = ("0" + (date_ob.getMonth() + 1)).slice(-2),
         year = date_ob.getFullYear(),
         hours = date_ob.getHours(),
-        minutes = date_ob.getMinutes(),
+        minutes = date_ob.getMinutes(), 
         seconds = date_ob.getSeconds()
     
     // on recupere les informations de transactions depuis le front-end
@@ -89,31 +89,8 @@ const transfert = async (req , res) => {
                         },
                         res.redirect("/transfert")
                     }
-                })             
-                /*
-                const moinsLeMontant = `UPDATE etudiants SET solde = solde - ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codeSource};`
-                DBConnection.query(moinsLeMontant, (err,_rows) => {
-                    if (err) {
-                        if (err) return res.status(500).send(err)
-                    }
-                    const ajoutMontant = `UPDATE etudiants SET solde = solde + ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codeDestinataire};`
-                    DBConnection.query(ajoutMontant, (err, _dt) => {
-                        if (err) {
-                            if (err) return res.status(500).send(err)
-                        } 
-                        // On finalise la transaction en l'enregistrant dans sa table 
-                        DBConnection.query('INSERT INTO transactions set ? ',newTransaction,( err,_result) => {
-                            if (err) throw err        
-                        })
-                    })
-                })
-
-                return req.session.sessionFlash = {
-                    type: 'success',
-                    message: 'Transfert éffectué avec succés !'
-                },
-                res.redirect("/transfert")*/
-                            
+                })      
+                                            
             } else {
                 return req.session.sessionFlash = {
                     type: 'danger',

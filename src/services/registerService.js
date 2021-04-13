@@ -10,10 +10,10 @@ const createNewUser = (data) => {
         if (ifCodeExist == false) {
             reject(`Ce code permanent "${data.codePermanent}" n'existe pas dans notre base de données`);
         }
-        /*
+        
         if (ifCodeExist == true) {
             reject(`Ce code permanent "${data.codePermanent}" est déjà associé à un compte`);
-        }*/
+        } 
         if (isEmailExist) {
             reject(`L'email "${data.email}" existe déjà. Veuillez tenter un autre `);
         } else { 
@@ -25,7 +25,7 @@ const createNewUser = (data) => {
                 password: bcrypt.hashSync(data.password, salt),
             };
 
-            //create a new account
+            //créer un nouveau compte
             DBConnection.query(
                 ' INSERT INTO compte set ? ', userItem,
                 (err, rows) =>{
