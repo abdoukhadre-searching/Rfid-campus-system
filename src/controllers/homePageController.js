@@ -18,7 +18,7 @@ const handleHelloWorld = (req, res) => {
             }
             res.render("homepage", {
                 //user: req.user,
-                async: false, // a cause des 'if else' effectuer au frontend sur les données reçues(false au depart)
+                async: false, // ajouter a cause des 'if else' effectuer au frontend sur les données reçues(false au depart)
                 etudiant: data[0]
             })
             console.log(data)

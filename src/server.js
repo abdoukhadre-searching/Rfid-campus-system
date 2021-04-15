@@ -18,7 +18,7 @@ const authToken = process.env.TWILIO_AUTH_TOKEN
 const client = require('twilio')(accountSid, authToken)
 
 client.messages.create({
-    body: 'Bonjour et bienvenue sur la plateforme de RFID Campus System...en guise de msg test après création de votre compte',
+    body: 'Bonjour et bienvenue sur la plateforme de UADB RFID Campus System.',
     from: '+16122559352',
     to: '+221775352211' // on peut opter l'idée selon laquelle chaque utilisateur ait un compte 'twilio'
 })

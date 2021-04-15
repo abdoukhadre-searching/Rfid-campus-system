@@ -8,7 +8,7 @@ let connection = mysql.createConnection({
     database: process.env.DB_NAME
 })
 
-connection.connect(function(err) {
+connection.connect((err) => {
     if (err) throw err
     console.log("Connection à la base de données ! Etablie ")
 })
