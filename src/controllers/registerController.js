@@ -26,10 +26,13 @@ const createNewUser = async (req, res) => {
         contact: req.body.contact,
         password: req.body.password
     }
-    //const msg = "Compte crée avec succés "
     try {
         await registerService.createNewUser(newUser)
-        return res.redirect("/login")
+        return req.session.sessionFlash = {
+            type: 'success',
+            message: 'Compte crée avec succés'
+        },
+        res.redirect("/login")
     } catch (err) {
         req.flash("errors", err)
         return res.redirect("/register")

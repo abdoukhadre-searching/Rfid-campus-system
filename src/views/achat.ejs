@@ -38,13 +38,13 @@
                 <p><b>Acceuil</b></p>
               </a>
             </li>
-            <li>
+            <li class="active">
               <a href="/achat">
                 <i class="now-ui-icons business_money-coins"></i>
                 <p>Achat</p>
               </a>
             </li>
-            <li  class="active">
+            <li>
               <a href="/transfert">
                 <i class="now-ui-icons tech_mobile"></i>
                 <p>Faire un transfert</p>
@@ -100,12 +100,12 @@
           <!--canvas id="bigDashboardChart"></canvas-->
           <div class="header text-center">
             <!--h2 class="title">Bienvenue sur RFID Campus System</h2-->
-            <h2 class="title">Effectuer un <b style="color: rgb(16, 99, 253);">Transfert</b> vers un autre compte</h2>
+            <h2 class="title">Faire un <b style="color: rgb(16, 99, 253);">Achat</b> </h2>
             <p class="category">Université Alioune Diop de Bambey<p>
           </div>  
         </div>
 
-        <div class="content">
+        <!--div class="content">
             <div class="row">
                 <div class="col-md-12">
                   <div class="card card-body">
@@ -113,10 +113,7 @@
                     <h5 class="card-category">Etat et suivi de la transaction</h5><hr>
                     <div class="container">
                       <% if ( sessionFlash && sessionFlash.message) { %>
-                        <div class="alert alert-<%= sessionFlash.type %>">
-                          <button type="button" aria-hidden="true" class="close">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
+                        <div class=" alert alert-<%= sessionFlash.type %>">
                           <strong><%= sessionFlash.message %></strong>
                         </div>
                       <% } %>
@@ -170,29 +167,14 @@
                 </div>
                 </div>
             </form>
-        </div>
-       </div>
+        </div-->
+       
+      
+      </div>
 
     <footer class="footer">
         <div class=" container-fluid ">
-          <!--nav>
-            <ul>
-              <li>
-                <a href="#">               
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  A propos de nous
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </nav-->
+          
           <div class="copyright" id="copyright">
             &copy;
             <script>              

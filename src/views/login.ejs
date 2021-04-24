@@ -26,6 +26,12 @@
                         </div>
                     <% }); %>
                 <% } %>
+
+                <% if ( sessionFlash && sessionFlash.message) { %>
+                    <div class="alert alert-<%= sessionFlash.type %>">
+                      <%= sessionFlash.message %>
+                    </div>
+                <% } %>
              </div>
             <div align=center class="logo">
                 <img style="width: 2.5cm;" src="./assets/img/logo_uadb_i.ico">

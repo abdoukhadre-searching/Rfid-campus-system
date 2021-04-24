@@ -9,7 +9,7 @@ const handleHelloWorld = (req, res) => {
         if (err) {
             return res.status(500).send(err)
         }
-        console.log(resultat[0].codePermanent)
+        console.log(resultat[0].codePermanent) // code permanent
 
         const sql2 = `SELECT * FROM etudiants WHERE codePermanent = ${resultat[0].codePermanent}`
         DBConnection.query(sql2, (err, data) => {
@@ -17,7 +17,6 @@ const handleHelloWorld = (req, res) => {
                 return res.status(500).send(err)
             }
             res.render("homepage", {
-                //user: req.user,
                 async: false, // ajouter a cause des 'if else' effectuer au frontend sur les données reçues(false au depart)
                 etudiant: data[0]
             })
@@ -29,7 +28,7 @@ const handleHelloWorld = (req, res) => {
 
 const activerDesactiverCarte = (req, res) =>{
 
-    const id= req.user.id
+    const id = req.user.id
     const sql = `SELECT (codePermanent) FROM compte WHERE id = ${id}`
 
     DBConnection.query(sql, (err, data)=>{
@@ -43,7 +42,7 @@ const activerDesactiverCarte = (req, res) =>{
             }
             if (result[0].statusCarte == 0) {
                 const query = `UPDATE etudiants SET statusCarte = 1 WHERE codePermanent = ${(result[0].codePermanent)}`
-                DBConnection.query(query , (err, data) => {
+                DBConnection.query(query , (err, _data) => {
                     if (err) {
                         return res.status(500).send(err)
                     } 
