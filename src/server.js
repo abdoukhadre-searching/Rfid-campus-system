@@ -12,7 +12,7 @@ import passport from "passport"
 //const path = require('path')
 const app = express()
 const sessionStore = new session.MemoryStore //add recently
-
+/*
 const accountSid = process.env.TWILIO_ACCOUNT_SID
 const authToken = process.env.TWILIO_AUTH_TOKEN
 const client = require('twilio')(accountSid, authToken)
@@ -22,7 +22,7 @@ client.messages.create({
     from: '+16122559352',
     to: '+221775352211' // on peut opter l'idée selon laquelle chaque utilisateur ait un compte 'twilio'
 })
-.then(message => console.log(message))
+.then(message => console.log(message))*/
 
 
 //use cookie parser
