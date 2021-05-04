@@ -1,6 +1,6 @@
 # Projet E-payment RFID Campus System for University
 
-** NodeJs + MySQL + Express  + Arduino + Visual Basic pour l'interface administrateur **
+**NodeJs + MySQL + Express  + Arduino + Visual Basic pour l'interface administrateur**
 
 Comment lancer le projet ?
 1. Cloner ce dernier dans un dossier de votre choix
