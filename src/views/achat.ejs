@@ -105,12 +105,12 @@
           </div>  
         </div>
 
-        <!--div class="content">
+        <div class="content">
             <div class="row">
                 <div class="col-md-12">
                   <div class="card card-body">
                    <div class="card-header">
-                    <h5 class="card-category">Etat et suivi de la transaction</h5><hr>
+                    <h5 class="card-category">Etat et suivi de la l'achat</h5><hr>
                     <div class="container">
                       <% if ( sessionFlash && sessionFlash.message) { %>
                         <div class=" alert alert-<%= sessionFlash.type %>">
@@ -123,43 +123,53 @@
                 </div>
             </div>
 
-            <form method="POST" action="/transfert">
+            <form method="POST" action="">
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="card card-body">
                      <div class="card-header">
-                        <h5 class="card-category">Veuiller remplir les informations suivantes :</h5><hr>
-                       
+                      <h5 class="card-category">Faite votre achat et recevez votre code aussitot</h5><hr>
+                       <div class="container">
                         <div class="row">
-                         <div class="col-md-4 pr-1">
-                            <div class="form-group">
-                                <h6 class="card-title"> Votre code permanent</h6>
-                                <input type="text" name="codesource" style="border-color:rgb(8, 156, 255) ;" class="form-control" required autofocus>
-                            </div>
-                         </div>
-                         
-                         <div class="col-md-4 pr-1">
-                          <div class="form-group">
-                              <h6 class="card-title"> Code destinataire</h6>
-                              <input type="text" name="codedestinataire" style="border-color:rgb(8, 156, 255) ;" class="form-control" required>
-                          </div>
-                         </div>
 
-                         <div class="col-md-4 pr-1">
-                          <div class="form-group">
-                              <h6 class="card-title"> Montant à transferer </h6>
-                              <input type="text" name="montant" style="border-color:rgb(8, 156, 255) ;" class="form-control" required>
-                          </div>
-                        </div>
-                        </div>
+                                <p id="repas" value="100" class="btn btn-info btn-simple"><b>100 Fcfa</b></p>
+                                <p id="petit_dej" value="50" class="btn btn-info btn-simple"><b>50 Fcfa</b></p>
+                                <p id="valeurJour" value= "250" class="btn btn-info btn-simple"><b>1 Jour</b></p>
+                                <p id="valeurSemaine" value="" class="btn btn-info btn-simple"><b>1 Semaine</b></p>
+                                <p id="valeurMois" value="7500" class="btn btn-info btn-simple"><b>1 Mois</b></p>
 
-                        <div class="row">
-                            
+                        <input type="text" id="somme" style="border-color:rgb(8, 156, 255);" class="form-control" required>
+                          <script>
+                            var somme = document.getElementById("somme");
+                            var repas = document.getElementById("repas");
+                            var dej = document.getElementById("petit_dej");
+                            var jour = document.getElementById("valeurJour");
+                            var semaine = document.getElementById("valeurSemaine");
+                            var mois = document.getElementById("valeurMois");
+
+                            repas.addEventListener("click", function(){
+                              somme.value = 100 ;
+                            });
+                            dej.addEventListener("click", function(){
+                              somme.value = 50 ;
+                            });
+                            jour.addEventListener("click", function(){
+                              somme.value = 250 ;
+                            });
+                            semaine.addEventListener("click", function(){
+                              somme.value = 1750 ;
+                            });
+                            mois.addEventListener("click", function(){
+                              somme.value = 7500 ;
+                            });
+
+                          </script>
                         </div>
+                       </div>
                         
-                        <button type="submit" class="btn btn-info btn-simple"><b>Envoyer</b></button>
+                        <button type="submit" class="btn btn-success btn-simple"><b>Confirmer l'achat</b></button>
                         <button type="reset" class="btn btn-secondary"><b>Annuler</b></button>
-                        <a class="btn btn-secondary" href="/"><b>Acceuil</b></a>
+                        <!--a class="btn btn-info" href="/"><b>Acceuil</b></a-->
 
                         
                      </div>
@@ -200,6 +210,8 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets/demo/demo.js"></script>
+  <!-- Events sur l'achats-->
+  <script src="assets/js/events.js"></script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js

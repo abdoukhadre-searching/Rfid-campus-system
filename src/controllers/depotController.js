@@ -78,7 +78,7 @@ const transfert = async (req , res) => {
                                 } 
                                 // On finalise la transaction en l'enregistrant dans sa table 
                                 DBConnection.query('INSERT INTO transactions set ? ',newTransaction,( err,_result) => {
-                                    if (err) throw err        
+                                    if (err) throw err       
                                 })
                             })
                         })

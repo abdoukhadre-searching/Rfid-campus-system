@@ -1,7 +1,7 @@
 const DBConnection = require ("./../configs/DBConnection")
 
 const handleHelloWorld = (req, res) => {
-
+    console.log(req.user)
     const id= req.user.id
     const sql = `SELECT (codePermanent) FROM compte WHERE id = ${id}`
 
