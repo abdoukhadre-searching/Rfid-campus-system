@@ -1,11 +1,11 @@
-# Projet E-payment RFID Campus University
+# Projet E-payment RFID Campus System for University
 
-**NodeJs + MySQL + Express + Visual Basic 2015 pour l'interface administrateur**
+** NodeJs + MySQL + Express  + Arduino + Visual Basic pour l'interface administrateur **
 
 Comment lancer le projet ?
-1. Cloner le projet
+1. Cloner ce dernier dans un dossier de votre choix
 
-2. Avec votre base de données pour l'instant avec 3 tables .
+2. Avec la base de données dans le dépot downloaded .
 
 3. Créer un fichier '.env' dans le dossier racine: copier le fichier depuis le depot cloné et adapté le avec vos propre informations, variable d'environnement pour la base de données,  etc..
 
