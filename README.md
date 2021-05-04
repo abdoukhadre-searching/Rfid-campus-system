@@ -12,3 +12,8 @@ Comment lancer le projet ?
 4. Lancer "npm install" pour installer tous les packages et dépendances du fichier package.json .
 
 5. Ensuite tapez "npm start " pour visualiser le project
+
+![Capture d’écran 2021-04-16 151810](https://user-images.githubusercontent.com/80549619/116976990-28054900-acc2-11eb-923a-c8aa54676c33.png)
+![Capture d’écran 2021-04-16 152135](https://user-images.githubusercontent.com/80549619/116977060-410dfa00-acc2-11eb-80d2-0f3d0222d509.png)
+![Capture d’écran 2021-04-16 152301](https://user-images.githubusercontent.com/80549619/116977066-42d7bd80-acc2-11eb-9f13-9f8edfdccb89.png)
+![mysql-nodejs](https://user-images.githubusercontent.com/80549619/116977508-cdb8b800-acc2-11eb-94c4-dbf5acba1e15.png)
