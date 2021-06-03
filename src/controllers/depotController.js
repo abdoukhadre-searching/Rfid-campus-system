@@ -15,27 +15,28 @@ const transfert = async (req , res) => {
     
     // on recupere les informations de transactions depuis le front-end
     const newTransaction = { // en guise de 'Data binding' (en variable objet)
-        codeSource: req.body.codesource,
-        codeDestinataire: req.body.codedestinataire,
+        codePermanentSource: req.body.codesource,
+        codePermanentDestinataire: req.body.codedestinataire,
         montant: req.body.montant,
-        dateTransfert: year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
+        date: year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
     }
-
-    const id = req.user.id
-    const query = `SELECT (codePermanent) FROM compte WHERE id = ${id}`
-    // on identifie l'utilisateur dans la table 'compte' avec son "codePermanent"
+    /*
+    const query = `SELECT (codePermanent) FROM compteetudiant WHERE idCompteEtudiant = ${req.user.idCompteEtudiant}`
+    //on identifie l'utilisateur dans la table 'compte' avec son "codePermanent"
     DBConnection.query(query, (err, data) => {
         if (err) return res.status(500).send(err)
-        const query2 = `SELECT * FROM etudiants WHERE codePermanent = ${data[0].codePermanent}`
-        // on recupère ses données en intégralité ..ensuite on les traite cas par cas en fonctions des
-        // conditions de transactions solde > montant ; si le code du destinatire existe ? ; etc ...
-        // ET update des 2 soldes ( source & destination ) à la fin de la transaction
-        // ok !!  
+    
+    on recupère ses données en intégralité ..ensuite on les traite cas par cas en fonctions des
+    conditions de transactions solde > montant ; si le code du destinatire existe ? ; etc ...
+    ET update des 2 soldes ( source & destination ) à la fin de la transaction
+    ok !! 
+    */ 
+        const query2 = `SELECT * FROM etudiant WHERE codePermanent = ${req.user.codePermanent}`
         DBConnection.query(query2, (err, result) => {
             if (err) {
                 return res.status(500).send(err)
             }
-            if (result[0].codePermanent == newTransaction.codeSource) {
+            if (result[0].codePermanent == newTransaction.codePermanentSource) {
                 if (result[0].solde <= newTransaction.montant) {
                     return req.session.sessionFlash = {
                         type: 'danger',
@@ -44,7 +45,7 @@ const transfert = async (req , res) => {
                     res.redirect("/transfert")
                 }
                 // éviter de faire la transaction sur son propre compte
-                if (newTransaction.codeSource == newTransaction.codeDestinataire) {
+                if (newTransaction.codePermanentSource == newTransaction.codePermanentDestinataire) {
                     return req.session.sessionFlash = {
                         type: 'danger',
                         message: 'Attention ! Vous ne pouvez pas mettre votre code permanent comme destinataire.'
@@ -52,7 +53,7 @@ const transfert = async (req , res) => {
                     res.redirect("/transfert")
                 }             
                 // on vérifie si le "codePermanent" du destinataire existe réellement
-                const checkCode = `SELECT (codePermanent) FROM etudiants WHERE codePermanent = ${newTransaction.codeDestinataire}`
+                const checkCode = `SELECT (codePermanent) FROM etudiant WHERE codePermanent = ${newTransaction.codePermanentDestinataire}`
                 DBConnection.query(checkCode, (err, data) => {
                     if (err) {
                         return res.status(500).send(err)
@@ -66,18 +67,18 @@ const transfert = async (req , res) => {
                         
                     }  else  {
 
-                        const moinsLeMontant = `UPDATE etudiants SET solde = solde - ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codeSource};`
+                        const moinsLeMontant = `UPDATE etudiant SET solde = solde - ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codePermanentSource};`
                         DBConnection.query(moinsLeMontant, (err,_rows) => {
                         if (err) {
                             if (err) return res.status(500).send(err)
                         }
-                        const ajoutMontant = `UPDATE etudiants SET solde = solde + ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codeDestinataire};`
+                        const ajoutMontant = `UPDATE etudiant SET solde = solde + ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codePermanentDestinataire};`
                             DBConnection.query(ajoutMontant, (err, _dt) => {
                                 if (err) {
                                     if (err) return res.status(500).send(err)
                                 } 
                                 // On finalise la transaction en l'enregistrant dans sa table 
-                                DBConnection.query('INSERT INTO transactions set ? ',newTransaction,( err,_result) => {
+                                DBConnection.query('INSERT INTO transferts set ? ', newTransaction, ( err,_result) => {
                                     if (err) throw err       
                                 })
                             })
@@ -99,7 +100,6 @@ const transfert = async (req , res) => {
                 res.redirect("/transfert")
             }
         })
-    })
 }
 
 module.exports = {

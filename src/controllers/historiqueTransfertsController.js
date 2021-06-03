@@ -1,15 +1,8 @@
 const DBConnection = require ("./../configs/DBConnection")
 
 const getPagehistroriqueTransfert = (req, res) => {
-
-    const id = req.user.id
-    const sql = `SELECT (codePermanent) FROM compte WHERE id = ${id}`
-
-    DBConnection.query(sql, (err, data)=>{
-        if (err) {
-            return res.status(500).send(err)
-        }
-        const sql1 = `SELECT * FROM transactions WHERE codeSource = ${data[0].codePermanent}`
+    
+        const sql1 = `SELECT * FROM transferts WHERE codePermanentSource = ${req.user.codePermanent}`
         DBConnection.query(sql1, (err, result) => {
             if (err) {
                 return res.status(500).send(err)
@@ -18,11 +11,8 @@ const getPagehistroriqueTransfert = (req, res) => {
                 resultat: result
             })            
         })
-    })
 }
 
-
 module.exports = {
-    //historiqueTransfert: historiqueTransfert,
     getPagehistroriqueTransfert: getPagehistroriqueTransfert
 }

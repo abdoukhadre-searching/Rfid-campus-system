@@ -25,7 +25,7 @@ let findUserByEmail = (email) => {
     return new Promise((resolve, reject) => {
         try {
             DBConnection.query(
-                ' SELECT * FROM `compte` WHERE `email` = ?  ', email,
+                ' SELECT * FROM `compteetudiant` WHERE `email` = ?  ', email,
                 function(err, rows) {
                     if (err) {
                         reject(err)
@@ -44,7 +44,7 @@ let findUserById = (id) => {
     return new Promise((resolve, reject) => {
         try {
             DBConnection.query(
-                ' SELECT * FROM `compte` WHERE `id` = ?  ', id,
+                ' SELECT * FROM `compteetudiant` WHERE `idCompteEtudiant` = ?  ', id,
                 function(err, rows) {
                     if (err) {
                         reject(err)

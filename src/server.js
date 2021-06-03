@@ -24,7 +24,6 @@ client.messages.create({
 })
 .then(message => console.log(message))
 
-
 //use cookie parser
 app.use(cookieParser('secret'))
 
@@ -35,7 +34,7 @@ app.use(session({
     store: sessionStore, //add recently
     saveUninitialized: false,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 86400000 1 day
+        maxAge: 1000 * 60 * 60 * 24 // 86400000  un jour 
     }
 }))
 

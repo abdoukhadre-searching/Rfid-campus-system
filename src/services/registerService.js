@@ -6,25 +6,27 @@ const createNewUser = (data) => {
         // check if email, contact and code already exist or not
         const isEmailExist = await checkExistEmail(data.email)
         const ifCodeExist = await checkExistCode(data.codePermanent)
-        const ifContactExist = await checkExistContact(data.contact)
+        //const ifContactExist = await checkExistContact(data.contact)
 
         if (isEmailExist) {
             reject(`L'email "${data.email}" existe déjà. Veuillez tenter un autre `)
         } else if (ifCodeExist == false) {
             reject(`Oups! ce code permanent "${data.codePermanent}" n'est pas dans notre base de données`)
+        /*
         } else if (ifContactExist == false) {
             reject(`Le numéro de téléphone que vous avez saisi c'est-à-dire le +221 "${data.contact}" n'est pas le votre. Veuiller entrer votre contact exact et identique lors des inscriptions !! `)
+        */
         } else {
             // Hasher le mot de passe
             const salt = bcrypt.genSaltSync(10)
             const userdata = {
-                codePermanent: data.codePermanent,
                 email: data.email,
-                contact: data.contact,             
                 password: bcrypt.hashSync(data.password, salt),
+                codePermanent: data.codePermanent,
+                etatCompte: true
             }
-            // Créer un nouveau compte
-            DBConnection.query(' INSERT INTO compte set ? ', userdata, (err, rows) =>{
+            // Créer un nouveau compte pour l'etudiant
+            DBConnection.query(' INSERT INTO compteetudiant set ? ', userdata, (err, rows) =>{
                     if (err) {
                         reject(false)
                     }
@@ -40,7 +42,7 @@ const checkExistEmail = (email) => {
     return new Promise( (resolve, reject) => {
         try {
             DBConnection.query(
-                ' SELECT * FROM `compte` WHERE `email` = ?  ', email,
+                ' SELECT * FROM `compteetudiant` WHERE `email` = ?  ', email,
                 function(err, resultat) {
                     if (err) {
                         reject(err)
@@ -61,7 +63,7 @@ const checkExistEmail = (email) => {
 const checkExistCode = (codePermanent) => {
     return new Promise( (resolve, reject) => {
         try {
-            const sql = "SELECT * FROM `etudiants` WHERE codePermanent = '"+ codePermanent +"'"
+            const sql = "SELECT * FROM `etudiant` WHERE codePermanent = '"+ codePermanent +"'"
             DBConnection.query(sql ,(err, result) => {
                     if (err) {
                         reject(err)
@@ -78,11 +80,11 @@ const checkExistCode = (codePermanent) => {
         }
     })
 }
-
+/*
 const checkExistContact = (contact) => {
     return new Promise( (resolve, reject) => {
         try {
-            const sql = "SELECT * FROM `etudiants` WHERE telephone = ' "+ contact +"' "
+            const sql = "SELECT * FROM `etudiant` WHERE telephone = ' "+ contact +"' "
             DBConnection.query(sql ,(err, result) => {
                     if (err) {
                         reject(err)
@@ -99,7 +101,7 @@ const checkExistContact = (contact) => {
         }
     })
 }
-
+*/
 module.exports = {
     createNewUser: createNewUser
 }

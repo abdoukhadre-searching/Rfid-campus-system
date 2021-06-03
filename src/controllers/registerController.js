@@ -23,14 +23,14 @@ const createNewUser = async (req, res) => {
     const newUser = {
         codePermanent: req.body.codePermanent,
         email: req.body.email,
-        contact: req.body.contact,
+        //contact: req.body.contact,
         password: req.body.password
     }
     try {
         await registerService.createNewUser(newUser)
         return req.session.sessionFlash = {
             type: 'success',
-            message: 'Compte crée avec succés'
+            message: 'Compte crée avec succés ! Maintenant accéder à votre compte'
         },
         res.redirect("/login")
     } catch (err) {

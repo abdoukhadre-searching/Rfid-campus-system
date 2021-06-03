@@ -132,11 +132,11 @@
               <div class="card card-body">
                 <div class="card-header">
                   <h5 class="card-category">Statut de ma carte</h5>
-                  <% if (etudiant.statusCarte == 1) { %>                      
+                  <% if (etudiant.etatCarte == 1) { %>                      
                     <h4 class="card-title text-green"><strong style="color:rgb(8, 156, 255);"> Activée</strong></h4>
                   <% } %>
 
-                  <% if (etudiant.statusCarte == 0) { %>
+                  <% if (etudiant.etatCarte == 0) { %>
                     <h4 class="card-title text-green"><strong style="color: red;"> Désactivée</strong></h4>
                   <% } %>
                   <div class="dropdown">
@@ -160,12 +160,12 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                       <a class="dropdown-item" href="#"><strong> Signaler une perte</strong></a>
-                      <% if (etudiant.statusCarte == 1) { %>
+                      <% if (etudiant.etatCarte == 1) { %>
                         <form action="/carte" method="POST">
                            <button type="submit" class="dropdown-item text"><strong style="color:red;"> Désactiver sa carte</strong></button>
                         </form>
                         <% } %>
-                      <% if (etudiant.statusCarte == 0) { %>
+                      <% if (etudiant.etatCarte == 0) { %>
                         <form action="/carte" method="POST">
                            <button  type="submit" class="dropdown-item text"><strong style="color:rgb(8, 156, 255);"> Activer sa carte</strong></button>
                         </form>
@@ -184,13 +184,15 @@
               <div class="col-lg-12">
                 <div class="card card-body">
                   <div class="card-header">
-                    <h5 class="card-category">Détail profil</h5>
+                    <h5 class="card-category">Détail sur mon profil</h5>
                     <h4 class="card-title"> Prénom: <strong><%= etudiant.prenom %></strong></h4>
                     <h4 class="card-title"> Nom: <strong><%= etudiant.nom %></strong></h4>
-                    <h4 class="card-title"> Numéro Téléphone: +221 <strong><%= etudiant.telephone %></strong></h4>
+                    <h4 class="card-title"> Date de naissance: <strong><%= etudiant.dateNaissance %></strong></h4>
+                    <h4 class="card-title"> Lieu de naissance: <strong><%= etudiant.lieuNaissance %></strong></h4>
                     <h4 class="card-title"> Niveau: <strong><%= etudiant.niveau %></strong></h4>
                     <h4 class="card-title"> Faculté : <strong><%= etudiant.ufr %></strong></h4>
-                    <h4 class="card-title"> Identifiant carte RFID: <strong><%= etudiant.numCarte %></strong></h4>
+                    <h4 class="card-title"> Filière : <strong><%= etudiant.filiere %></strong></h4>
+                    <h4 class="card-title"> Identifiant carte RFID: <strong><%= etudiant.idCarte %></strong></h4>
                     <div class="dropdown">
                       <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown" disabled>
                         <i style="color:black" class="now-ui-icons ui-1_check"></i>
