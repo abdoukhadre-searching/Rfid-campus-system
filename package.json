@@ -1,5 +1,5 @@
 {
-  "name": "E_Payment_Appli_RFID",
+  "name": "Campus RFID System",
   "version": "1.0.0",
   "description": "Building a login system with NodeJS",
   "main": "server.js",

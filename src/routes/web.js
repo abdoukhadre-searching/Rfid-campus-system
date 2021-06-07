@@ -8,6 +8,7 @@ const initPassportLocal = require ( "../controllers/passportLocalController")
 const depotController = require("../controllers/depotController")
 const historiqueTransfertsController = require("../controllers/historiqueTransfertsController")
 const achatController = require("../controllers/achatController")
+const historiqueAchatContoller = require("../controllers/historiqueAchatContoller")
 
 // Initialise tous les `passports` relatifs à l'authentification
 initPassportLocal()
@@ -30,6 +31,7 @@ const initWebRoutes = (app) => {
     router.post("/carte",loginController.checkLoggedIn, homePageController.activerDesactiverCarte)
     router.post("/transfert", loginController.checkLoggedIn, depotController.transfert)
     router.get ("/historique", loginController.checkLoggedIn, historiqueTransfertsController.getPagehistroriqueTransfert)
+    router.get("/historique-achat", loginController.checkLoggedIn, historiqueAchatContoller.achatHistorique)
     router.get("/transfert", loginController.checkLoggedIn, depotController.getpageTransfert)
     router.get("/achat", loginController.checkLoggedIn, achatController.achatPage)
     router.get("**", (req,res)=>{
