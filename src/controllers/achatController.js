@@ -1,9 +1,9 @@
-const DBConnection = require ("./../configs/DBConnection")
+import {connection} from "./../configs/DBConnection.js"
 
-const achatPage = (req, res) => {
+export const achatPage = (req, res) => {
     return res.render('achat')
 }
 
-module.exports = {
-    achatPage: achatPage
-}
+// module.exports = {
+//     achatPage: achatPage
+// }

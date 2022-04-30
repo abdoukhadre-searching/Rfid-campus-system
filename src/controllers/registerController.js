@@ -1,13 +1,13 @@
-import registerService from "./../services/registerService"
+import {_createNewUser} from "./../services/registerService.js"
 import { validationResult } from "express-validator"
 
-const getPageRegister = (req, res) => {
+export const getPageRegister = (req, res) => {
     return res.render("register.ejs", {
         errors: req.flash("errors")
     })
 } 
 
-const createNewUser = async (req, res) => {
+export const createNewUser = async (req, res) => {
     //valider les champs requises
     const errorsArr = []
     const validationErrors = validationResult(req)
@@ -27,7 +27,7 @@ const createNewUser = async (req, res) => {
         password: req.body.password
     }
     try {
-        await registerService.createNewUser(newUser)
+        await createNewUser(newUser)
         return req.session.sessionFlash = {
             type: 'success',
             message: 'Compte crée avec succés ! Maintenant accéder à votre compte'
@@ -38,7 +38,7 @@ const createNewUser = async (req, res) => {
         return res.redirect("/register")
     }
 }
-module.exports = {
-    getPageRegister: getPageRegister,
-    createNewUser: createNewUser
-}
+// module.exports = {
+//     getPageRegister: getPageRegister,
+//     createNewUser: createNewUser
+// }

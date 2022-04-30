@@ -1,7 +1,7 @@
-require('dotenv').config()
+import 'dotenv/config'
 import express from "express"
-import configViewEngine from "./configs/viewEngine"
-import initWebRoutes from "./routes/web"
+import {configViewEngine} from "./configs/viewEngine.js"
+import {initWebRoutes} from "./routes/web.js"
 import bodyParser from "body-parser"
 import cookieParser from 'cookie-parser'
 import session from "express-session"
@@ -13,16 +13,16 @@ import passport from "passport"
 const app = express()
 const sessionStore = new session.MemoryStore //add recently
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID
-const authToken = process.env.TWILIO_AUTH_TOKEN
-const client = require('twilio')(accountSid, authToken)
+// const accountSid = process.env.TWILIO_ACCOUNT_SID
+// const authToken = process.env.TWILIO_AUTH_TOKEN
+// const client = require('twilio')(accountSid, authToken)
 
-client.messages.create({
-    body: 'Bonjour et bienvenue sur la plateforme de UADB RFID Campus System.',
-    from: '+16122559352',
-    to: '+221775352211' // on peut opter l'idée selon laquelle chaque utilisateur ait un compte 'twilio'
-})
-.then(message => console.log(message))
+// client.messages.create({
+//     body: 'Bonjour et bienvenue sur la plateforme de UADB RFID Campus System.',
+//     from: '+16122559352',
+//     to: '+221775352211' // on peut opter l'idée selon laquelle chaque utilisateur ait un compte 'twilio'
+// })
+// .then(message => console.log(message))
 
 //use cookie parser
 app.use(cookieParser('secret'))

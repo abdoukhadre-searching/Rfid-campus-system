@@ -1,7 +1,7 @@
-import DBConnection from "../configs/DBConnection";
+import {connection} from "../configs/DBConnection.js";
 import bcrypt from "bcryptjs";
 
-let handleLogin = (email, password) => {
+export const _handleLogin  = (email, password) => {
     return new Promise(async (resolve, reject) => {
         //check email is exist or not
         let user = await findUserByEmail(email);
@@ -21,10 +21,10 @@ let handleLogin = (email, password) => {
 };
 
 
-let findUserByEmail = (email) => {
+export const  findUserByEmail = (email) => {
     return new Promise((resolve, reject) => {
         try {
-            DBConnection.query(
+            connection.query(
                 ' SELECT * FROM `compteetudiant` WHERE `email` = ?  ', email,
                 function(err, rows) {
                     if (err) {
@@ -40,10 +40,10 @@ let findUserByEmail = (email) => {
     });
 };
 
-let findUserById = (id) => {
+export const findUserById = (id) => {
     return new Promise((resolve, reject) => {
         try {
-            DBConnection.query(
+            connection.query(
                 ' SELECT * FROM `compteetudiant` WHERE `idCompteEtudiant` = ?  ', id,
                 function(err, rows) {
                     if (err) {
@@ -59,7 +59,7 @@ let findUserById = (id) => {
     });
 };
 
-let comparePassword = (password, userObject) => {
+export const comparePassword = (password, userObject) => {
     return new Promise(async (resolve, reject) => {
         try {
             await bcrypt.compare(password, userObject.password).then((isMatch) => {
@@ -75,9 +75,9 @@ let comparePassword = (password, userObject) => {
     });
 };
 
-module.exports = {
-    handleLogin: handleLogin,
-    findUserByEmail: findUserByEmail,
-    findUserById: findUserById,
-    comparePassword: comparePassword
-};
+// module.exports = {
+//     handleLogin: handleLogin,
+//     findUserByEmail: findUserByEmail,
+//     findUserById: findUserById,
+//     comparePassword: comparePassword
+// };

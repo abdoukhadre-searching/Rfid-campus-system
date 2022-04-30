@@ -1,9 +1,9 @@
-const DBConnection = require ("./../configs/DBConnection")
+import  {connection} from "./../configs/DBConnection.js"
 
-const getPagehistroriqueTransfert = (req, res) => {
+export const getPagehistroriqueTransfert = (req, res) => {
     
         const sql1 = `SELECT * FROM transferts WHERE codePermanentSource = ${req.user.codePermanent}`
-        DBConnection.query(sql1, (err, result) => {
+        connection.query(sql1, (err, result) => {
             if (err) {
                 return res.status(500).send(err)
             }                             
@@ -13,6 +13,6 @@ const getPagehistroriqueTransfert = (req, res) => {
         })
 }
 
-module.exports = {
-    getPagehistroriqueTransfert: getPagehistroriqueTransfert
-}
+// module.exports = {
+//     getPagehistroriqueTransfert: getPagehistroriqueTransfert
+// }

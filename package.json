@@ -1,33 +1,33 @@
 {
-  "name": "Campus RFID System",
+  "name": "Campus_e_payement",
   "version": "1.0.0",
   "description": "Building a login system with NodeJS",
-  "main": "server.js",
+  "main": "my_server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node src/server.js"
+    "start": "nodemon src/my_server.js"
   },
   "author": "Dream Team SRT",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.0",
     "bootstrap": "^4.6.0",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.5",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.2",
-    "express": "^4.17.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^8.6.0",
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
     "express-ejs-layouts": "^2.5.0",
-    "express-flash": "^0.0.2",
-    "express-session": "^1.17.1",
-    "express-validator": "^6.5.0",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.14.0",
     "long": "^4.0.0",
-    "mysql2": "^2.1.0",
+    "mysql2": "^2.3.3",
     "node-datetime": "^2.1.2",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "twilio": "^3.59.0"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

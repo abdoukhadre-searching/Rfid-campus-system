@@ -1,9 +1,9 @@
-const DBConnection = require ("./../configs/DBConnection")
+import {connection} from "./../configs/DBConnection.js"
 
-const getpageTransfert = (req,res) => {
+export const getpageTransfert = (req,res) => {
    return res.render("transfert")
 }
-const transfert = async (req , res) => {
+export const transfert = async (req , res) => {
     
     const date_ob = new Date(),
         date = ("0" + date_ob.getDate()).slice(-2),
@@ -32,7 +32,7 @@ const transfert = async (req , res) => {
     ok !! 
     */ 
         const query2 = `SELECT * FROM etudiant WHERE codePermanent = ${req.user.codePermanent}`
-        DBConnection.query(query2, (err, result) => {
+        connection.query(query2, (err, result) => {
             if (err) {
                 return res.status(500).send(err)
             }
@@ -54,7 +54,7 @@ const transfert = async (req , res) => {
                 }             
                 // on vérifie si le "codePermanent" du destinataire existe réellement
                 const checkCode = `SELECT (codePermanent) FROM etudiant WHERE codePermanent = ${newTransaction.codePermanentDestinataire}`
-                DBConnection.query(checkCode, (err, data) => {
+                connection.query(checkCode, (err, data) => {
                     if (err) {
                         return res.status(500).send(err)
                     }
@@ -68,17 +68,17 @@ const transfert = async (req , res) => {
                     }  else  {
 
                         const moinsLeMontant = `UPDATE etudiant SET solde = solde - ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codePermanentSource};`
-                        DBConnection.query(moinsLeMontant, (err,_rows) => {
+                        connection.query(moinsLeMontant, (err,_rows) => {
                         if (err) {
                             if (err) return res.status(500).send(err)
                         }
                         const ajoutMontant = `UPDATE etudiant SET solde = solde + ${newTransaction.montant} WHERE codePermanent = ${newTransaction.codePermanentDestinataire};`
-                            DBConnection.query(ajoutMontant, (err, _dt) => {
+                            connection.query(ajoutMontant, (err, _dt) => {
                                 if (err) {
                                     if (err) return res.status(500).send(err)
                                 } 
                                 // On finalise la transaction en l'enregistrant dans sa table 
-                                DBConnection.query('INSERT INTO transferts set ? ', newTransaction, ( err,_result) => {
+                                connection.query('INSERT INTO transferts set ? ', newTransaction, ( err,_result) => {
                                     if (err) throw err       
                                 })
                             })
@@ -102,7 +102,7 @@ const transfert = async (req , res) => {
         })
 }
 
-module.exports = {
-    getpageTransfert: getpageTransfert,
-    transfert: transfert
-}
+// module.exports = {
+//     getpageTransfert: getpageTransfert,
+//     transfert: transfert
+// }

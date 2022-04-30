@@ -1,18 +1,18 @@
-const DBConnection = require ("./../configs/DBConnection")
+import {connection} from "./../configs/DBConnection.js"
 
-const achatHistorique = (req, res) => {
+export const achatHistorique = (req, res) => {
             const sql = `SELECT idAchats
                 FROM 
                 achatparcarte
                 WHERE
                 codePermanent = ${req.user.codePermanent}`
-                DBConnection.query(sql, (err, result) => {
+                connection.query(sql, (err, result) => {
                     if (err) {
                         return res.status(500).send(err)
                     }
                     console.log(result)
                         const query  = `SELECT * FROM achats WHERE idAchats = ${result[1].idAchats}`
-                        DBConnection.query(query, (err, data) => {
+                        connection.query(query, (err, data) => {
                             if (err) {
                                 return res.status(500).send(err)
                             }
@@ -24,6 +24,6 @@ const achatHistorique = (req, res) => {
                 })
 }
 
-module.exports = {
-    achatHistorique: achatHistorique
-}
+// module.exports = {
+//     achatHistorique: achatHistorique
+// }

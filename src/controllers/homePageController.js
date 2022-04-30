@@ -1,10 +1,10 @@
-const DBConnection = require ("./../configs/DBConnection")
-
-const handleHelloWorld = (req, res) => {
+// const DBConnection = require ("./../configs/DBConnection")
+import {connection} from "./../configs/DBConnection.js"
+export const handleHelloWorld = (req, res) => {
     console.log(req.user)
     
         const sql = `SELECT * FROM etudiant WHERE codePermanent = ${req.user.codePermanent}`
-        DBConnection.query(sql, (err, data) => {
+        connection.query(sql, (err, data) => {
             if (err) {
                 return res.status(500).send(err)
             }
@@ -16,23 +16,23 @@ const handleHelloWorld = (req, res) => {
         })
 }
 
-const activerDesactiverCarte = (req, res) =>{
+export const activerDesactiverCarte = (req, res) =>{
 
         const sql2 = `SELECT * FROM etudiant WHERE codePermanent = ${req.user.codePermanent}`
-        DBConnection.query(sql2, (err, result) => {
+        connection.query(sql2, (err, result) => {
             if (err) {
                 return res.status(500).send(err)
             }
             if (result[0].etatCarte == 0) {
                 const query = `UPDATE etudiant SET etatCarte = 1 WHERE codePermanent = ${(result[0].codePermanent)}`
-                DBConnection.query(query , (err, _data) => {
+                connection.query(query , (err, _data) => {
                     if (err) {
                         return res.status(500).send(err)
                     } 
                 })         
             } else {
                 const query2 = `UPDATE etudiant SET etatCarte = 0 WHERE codePermanent = ${(result[0].codePermanent)} `
-                DBConnection.query (query2 , (err, data) => {
+                connection.query (query2 , (err, data) => {
                     if (err) {
                         return res.status(500).send(err)
                     } 
@@ -42,7 +42,7 @@ const activerDesactiverCarte = (req, res) =>{
         })
 }
 
-module.exports = {
-    handleHelloWorld: handleHelloWorld,
-    activerDesactiverCarte: activerDesactiverCarte
-}
+// module.exports = {
+//     handleHelloWorld: handleHelloWorld,
+//     activerDesactiverCarte: activerDesactiverCarte
+// }

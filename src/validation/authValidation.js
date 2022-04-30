@@ -1,6 +1,6 @@
 import { check } from "express-validator";
 
-let validateRegister = [
+export const validateRegister = [
     check("email", "Email invalide").isEmail().trim(),
 
     check("password", "Mot de passe invalide. le mot de passe doit contenir au moins 2 caractères")
@@ -12,14 +12,14 @@ let validateRegister = [
     })
 ];
 
-let validateLogin = [
+export const validateLogin = [
     check("email", "Email invalide").isEmail().trim(),
 
     check("password", "Mot de passe invalide")
     .not().isEmpty()
 ];
 
-module.exports = {
-    validateRegister: validateRegister,
-    validateLogin: validateLogin
-};
+// module.exports = {
+//     validateRegister: validateRegister,
+//     validateLogin: validateLogin
+// };

@@ -1,7 +1,7 @@
-import DBConnection from "./../configs/DBConnection"
+import {connection} from "./../configs/DBConnection.js"
 import bcrypt from "bcryptjs"
 
-const createNewUser = (data) => {
+export const _createNewUser = (data) => {
     return new Promise(async (resolve, reject) => {
         // check if email, contact and code already exist or not
         const isEmailExist = await checkExistEmail(data.email)
@@ -26,7 +26,7 @@ const createNewUser = (data) => {
                 etatCompte: true
             }
             // Créer un nouveau compte pour l'etudiant
-            DBConnection.query(' INSERT INTO compteetudiant set ? ', userdata, (err, rows) =>{
+            connection.query(' INSERT INTO compteetudiant set ? ', userdata, (err, rows) =>{
                     if (err) {
                         reject(false)
                     }
@@ -38,10 +38,10 @@ const createNewUser = (data) => {
     })
 }
 
-const checkExistEmail = (email) => {
+export const checkExistEmail = (email) => {
     return new Promise( (resolve, reject) => {
         try {
-            DBConnection.query(
+            connection.query(
                 ' SELECT * FROM `compteetudiant` WHERE `email` = ?  ', email,
                 function(err, resultat) {
                     if (err) {
@@ -60,11 +60,11 @@ const checkExistEmail = (email) => {
     })
 }
 
-const checkExistCode = (codePermanent) => {
+export const checkExistCode = (codePermanent) => {
     return new Promise( (resolve, reject) => {
         try {
             const sql = "SELECT * FROM `etudiant` WHERE codePermanent = '"+ codePermanent +"'"
-            DBConnection.query(sql ,(err, result) => {
+            connection.query(sql ,(err, result) => {
                     if (err) {
                         reject(err)
                     }
@@ -102,6 +102,6 @@ const checkExistContact = (contact) => {
     })
 }
 */
-module.exports = {
-    createNewUser: createNewUser
-}
+// module.exports = {
+//     _createNewUser: _createNewUser
+// }
